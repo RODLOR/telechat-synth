@@ -5,6 +5,7 @@ from requests.exceptions import ReadTimeout
 import sys
 import io
 import time
+from ..config import TELEBOT_API_KEY, WHISPER_API_KEY
 
 
 # TTS Init
@@ -20,7 +21,7 @@ print('Browser Driver inicializado correctamente 👍')
     # Cambiar el encoding de la consola a UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-bot = telebot.TeleBot("6004580627:AAHG8hKuts6ULhbuoZ8kPqzP_0TmbNKMDIM")
+bot = telebot.TeleBot(TELEBOT_API_KEY)
 print('Bot asignado correctamente 👍')
 
 # Log declaration
@@ -107,6 +108,7 @@ def send_audio(text, chat_id):
 
 @bot.message_handler(content_types=['voice', 'audio'])
 def handle_voice(message):
+    whisper = whisper_api(WHISPER_API_KEY)
     try:
         chat_id = message.chat.id
         if driver.number == 0:
@@ -123,8 +125,7 @@ def handle_voice(message):
                 audio_file_path = 'app/assets/audio/audio.ogg'
                 with open(audio_file_path, 'wb') as f:
                     f.write(downloaded_file)
-                # Pasar el archivo de audio a la función query()
-                whisper = whisper_api('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')
+
                 response = whisper.transcribe(audio_file_path)
                 time.sleep(5)
                 os.remove(audio_file_path)
@@ -148,8 +149,7 @@ def handle_voice(message):
             audio_file_path = 'app/assets/audio/audio.ogg'
             with open(audio_file_path, 'wb') as f:
                 f.write(downloaded_file)
-            # Pasar el archivo de audio a la función query()
-            whisper = whisper_api('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')
+
             response = whisper.transcribe(audio_file_path)
             print(f"{response}")
             time.sleep(5)
