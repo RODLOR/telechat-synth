@@ -2,8 +2,6 @@
 
 Telechat-Synth is a Telegram chatbot that utilizes various language models and speech synthesis technologies to provide interactive conversational experiences. It leverages OpenAssistant's "oasst-sft-4-pythia-12b-epoch-3.5" chat model for generating responses, the Whisper model for converting audio to text, and the Bark TTS (Text-to-Speech) model for converting text to audio.
 
-![Chat Example](images/chat_example.png)
-
 ## Features
 
 - Real-time chat conversation with the chatbot powered by OpenAssistant's language model.
