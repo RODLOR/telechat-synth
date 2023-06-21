@@ -29,9 +29,7 @@ Before running the Telechat-Synth chatbot, please make sure you have the followi
    ```
    pip install -r requirements.txt
    ```
-3. Edit the `~/app/config.py` file in the project directory.
-4. Copy the following content into the `config.py` file and replace the placeholders with your API keys:
-
+3. Edit the `~/app/config.py` file in the project directory. Replace the placeholders with your API keys:
    ```python
    # Paste your Hugging Face API KEY
    HF_API_KEY = 'HF API KEY'  # hf_*******************************
