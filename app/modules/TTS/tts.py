@@ -4,13 +4,13 @@ from bark import SAMPLE_RATE, generate_audio, preload_models
 import soundfile as sf
 
 class TTS():
-    def __init__(self, path):
-        os.environ["SUNO_OFFLOAD_CPU"] = "True"
-        os.environ["SUNO_USE_SMALL_MODELS"] = "True"
+    def __init__(self, path, USE_SMALL_MODELS):
+        os.environ["SUNO_OFFLOAD_CPU"] = str(USE_SMALL_MODELS)
+        os.environ["SUNO_USE_SMALL_MODELS"] = str(USE_SMALL_MODELS)
         preload_models()
         self.audio_path = path
 
-    def to_audio(self, text_prompt: str, SPEAKER: str, format: str):
+    def to_audio(self, text_prompt: str, SPEAKER: str = 'v2/en_speaker_9' , format: str = 'ogg'):
         try:
             # dividir el texto en palabras
             words = text_prompt.replace(".", ". ").split()
@@ -27,7 +27,6 @@ class TTS():
                 final = generate_audio(
                     f"{words}...", history_prompt=SPEAKER)
 
-            # Utilizar el contexto 'with' para garantizar el cierre adecuado del archivo
             with open(f'{self.audio_path}tts.{format}', 'wb') as file:
                 sf.write(file, final, SAMPLE_RATE)
         except Exception as err:
