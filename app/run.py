@@ -18,7 +18,7 @@ chat = chat_model(HF_API_KEY)
 bot = telebot.TeleBot(TELEBOT_API_KEY)
 
 # Log declaration
-log = log_handler('app\log\log.txt')
+log = log_handler('app/log/log.txt')
 
 @bot.message_handler(content_types=['text', 'document'])
 def handle_text(message):
