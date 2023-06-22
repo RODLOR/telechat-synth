@@ -25,11 +25,12 @@ Before running the Telechat-Synth chatbot, please make sure you have the followi
 ## Setup
 
 1. Clone the Telechat-Synth repository to your local machine.
-2. Install the required dependencies by running the following command:
+2. Create a env with virtualenv.
+3. Install the required dependencies by running the following command:
    ```
    pip install -r requirements.txt
    ```
-3. Edit the `~/app/config.py` file in the project directory. Replace the placeholders with your API keys:
+4. Edit the `~/app/config.py` file in the project directory. Replace the placeholders with your API keys:
    ```python
    # Paste your Hugging Face API KEY
    HF_API_KEY = 'HF API KEY'  # hf_*******************************
