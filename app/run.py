@@ -8,7 +8,7 @@ import time
 from config import TELEBOT_API_KEY, HF_API_KEY, BOT_SYSTEM_INSTRUCTION, SYSTEM_REFRESH, BARK_SMALL_MODELS, SPEAKER
 
 # TTS Init
-au_model = TTS('app/assets/audio/', BARK_SMALL_MODELS)
+au_model = TTS('./assets/audio/', BARK_SMALL_MODELS)
 print('TTS initialized successfully 👍')
 
 # chat_model Init
@@ -18,7 +18,7 @@ chat = chat_model(HF_API_KEY)
 bot = telebot.TeleBot(TELEBOT_API_KEY)
 
 # Log declaration
-log = log_handler('app/log/log.txt')
+log = log_handler('./log/log.txt')
 
 @bot.message_handler(content_types=['text', 'document'])
 def handle_text(message):
@@ -78,7 +78,7 @@ def handle_voice(message):
                 # Download the audio file
                 downloaded_file = bot.download_file(file_path)
                 # Save the audio file
-                audio_file_path = 'app/assets/audio/audio.ogg'
+                audio_file_path = './assets/audio/audio.ogg'
                 with open(audio_file_path, 'wb') as f:
                     f.write(downloaded_file)
 
@@ -102,7 +102,7 @@ def handle_voice(message):
             # Download the audio file
             downloaded_file = bot.download_file(file_path)
             # Save the audio file
-            audio_file_path = 'app/assets/audio/audio.ogg'
+            audio_file_path = './assets/audio/audio.ogg'
             with open(audio_file_path, 'wb') as f:
                 f.write(downloaded_file)
 
