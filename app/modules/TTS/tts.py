@@ -24,8 +24,7 @@ class TTS():
                     pieces.append(audio_array)
                 final = np.concatenate(pieces)
             else:
-                final = generate_audio(
-                    f"{words}...", history_prompt=SPEAKER)
+                final = generate_audio(text_prompt, history_prompt=SPEAKER)
 
             with open(f'{self.audio_path}tts.{format}', 'wb') as file:
                 sf.write(file, final, SAMPLE_RATE)
